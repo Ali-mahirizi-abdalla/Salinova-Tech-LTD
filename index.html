@@ -271,12 +271,49 @@
             transform: translateY(0);
         }
 
+        /* Logo and Taglines */
+        .css-logo {
+            font-size: 3.5rem;
+            font-weight: 900;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .motto-tagline {
+            color: #00B4FF;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        .sub-tagline {
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
         @media (max-width: 680px) {
             form {
                 padding: 1.5rem;
             }
             .hero h1 {
                 font-size: 1.4rem;
+            }
+            .css-logo {
+                font-size: 2.6rem;
+            }
+            .motto-tagline {
+                font-size: 0.75rem;
+                letter-spacing: 1px;
+            }
+            .sub-tagline {
+                font-size: 0.95rem;
             }
         }
 
@@ -289,10 +326,14 @@
 
 <div class="form-container">
     <div class="hero">
-        <img src="logo.png" alt="Salinova Tech Logo" style="height: 90px; width: auto; margin-bottom: 12px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <div class="css-logo">
+            <span style="color: #1e487b;">S</span>
+            <span style="color: #1e487b; margin-left: -5px;">T</span>
+            <span style="color: #00B4FF; margin-left: -2px;">L</span>
+        </div>
         <h1>SALINOVA TECH LTD</h1>
-        <div class="tagline" style="color: #00B4FF; font-weight: 600; font-size: 0.9rem; letter-spacing: 2px; margin-top: 5px; text-transform: uppercase;">Empowering Minds. Building Futures.</div>
-        <div class="tagline" style="margin-top: 10px; font-size: 1.1rem;">Full Stack Web Development Training Registration</div>
+        <div class="tagline motto-tagline">Empowering Minds. Building Futures.</div>
+        <div class="tagline sub-tagline">Full Stack Web Development Training Registration</div>
         <div class="course-badge">
             <span><i class="far fa-clock"></i> 12 Weeks</span>
             <span><i class="fas fa-video"></i> Online Live</span>
