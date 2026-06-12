@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>SALINOVA TECH LTD | Full Stack Dev Training Registration</title>
+    <!-- Google Fonts & Simple CSS Reset -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #e9f0fc 0%, #d9e4f5 100%);
+            padding: 2rem 1rem;
+            color: #0a2b3e;
+        }
+
+        /* main container */
+        .form-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* header section */
+        .hero {
+            background: #0f2f3d;
+            background-image: radial-gradient(circle at 10% 30%, #1a4c60, #07212e);
+            padding: 2rem 2rem 1.8rem;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 i {
+            font-size: 2rem;
+            color: #ffcd7e;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .hero .course-badge {
+            background: rgba(255,255,240,0.15);
+            border-radius: 40px;
+            padding: 0.5rem 1.3rem;
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero .course-badge span {
+            background: #ffcd7e20;
+            padding: 4px 12px;
+            border-radius: 30px;
+        }
+
+        /* main form */
+        form {
+            padding: 2rem 2rem 2.5rem;
+        }
+
+        .section {
+            background: #fefefe;
+            border-radius: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 0.2rem 0;
+            border: 1px solid #e2edf7;
+            transition: 0.1s;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            padding: 0 1.5rem;
+            padding-top: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #155f73;
+            border-left: 5px solid #ffb347;
+        }
+
+        .section-title i {
+            font-size: 1.6rem;
+            color: #ff9f3d;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.3rem;
+            padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-field label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1c5a6e;
+            letter-spacing: -0.2px;
+        }
+
+        label .req {
+            color: #e34d4d;
+            margin-left: 4px;
+        }
+
+        input, select, textarea {
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1.5px solid #dce7ef;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            background: white;
+            transition: 0.2s;
+            outline: none;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #ff9f3d;
+            box-shadow: 0 0 0 3px rgba(255, 159, 61, 0.2);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 6px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            background: #f7fafd;
+            padding: 6px 12px;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+
+        .checkbox-group input {
+            width: 18px;
+            height: 18px;
+            accent-color: #ff9f3d;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        hr {
+            margin: 0.5rem 0;
+            border-color: #e4edf5;
+        }
+
+        .btn-submit {
+            background: linear-gradient(95deg, #0f2f3d, #1b5e75);
+            border: none;
+            padding: 1rem 1.8rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            border-radius: 60px;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 0.5rem;
+            box-shadow: 0 8px 16px -6px #0f2f3d40;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(95deg, #1b4c5e, #0f3f50);
+            transform: scale(0.99);
+        }
+
+        .footer-note {
+            background: #f2f8fe;
+            padding: 1rem 1.5rem;
+            border-radius: 1.2rem;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #2c6e82;
+        }
+
+        .error-msg {
+            color: #c7362b;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .success-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1f6e43;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transform: translateY(150%);
+            transition: transform 0.3s ease;
+        }
+
+        .success-toast.show {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 680px) {
+            form {
+                padding: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+        }
+
+        .inline-icon {
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="hero">
+        <h1>
+            <i class="fas fa-laptop-code"></i> 
+            SALINOVA TECH LTD
+        </h1>
+        <div class="tagline">Full Stack Web Development Training Registration</div>
+        <div class="course-badge">
+            <span><i class="far fa-clock"></i> 12 Weeks</span>
+            <span><i class="fas fa-video"></i> Online Live</span>
+            <span><i class="fas fa-tasks"></i> Weekly Projects</span>
+            <span><i class="fas fa-certificate"></i> Certificate</span>
+        </div>
+        <p style="margin-top: 12px; font-size: 0.85rem;"><i class="fas fa-shield-alt"></i> KES 500/week • Attendance policy applies</p>
+    </div>
+
+    <form id="registrationForm">
+        <!-- Section 1: Personal Information -->
+        <div class="section">
+            <div class="section-title"><i class="fas fa-user-circle"></i> 1. Personal Information</div>
+            <div class="form-grid">
+                <div class="form-field">
+                    <label>Full Name <span class="req">*</span></label>
+                    <input type="text" id="fullName" placeholder="e.g., James Mwangi" required>
+                    <div class="error-msg" id="nameError"></div>
+                </div>
+                <div class="form-field">
+                    <label>Phone Number (WhatsApp) <span class="req">*</span></label>
+                    <input type="tel" id="phone" placeholder="+254 7XX XXX XXX" required>
+                    <div class="error-msg" id="phoneError"></div>
+                </div>
+                <div class="form-field">
+                    <label>Email Address <span class="req">*</span></label>
+                    <input type="email" id="email" placeholder="student@example.com" required>
+                    <div class="error-msg" id="emailError"></div>
+                </div>
+                <div class="form-field">
+                    <label>Gender</label>
+                    <select id="gender">
+                        <option value="">Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Prefer not to say</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>County of Residence <span class="req">*</span></label>
+                    <input type="text" id="county" placeholder="e.g., Nairobi, Mombasa" required>
+                    <div class="error-msg" id="countyError"></div>
+                </div>
+                <div class="form-field">
+                    <label>Current Occupation</label>
+                    <select id="occupation">
+                        <option>Student</option>
+                        <option>Employed</option>
+                        <option>Self-Employed</option>
+                        <option>Unemployed</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Institution/School/University (If Applicable)</label>
+                    <input type="text" id="institution" placeholder="Your school or N/A">
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Technical Background -->
+        <div class="section">
+            <div class="section-title"><i class="fas fa-code"></i> 2. Technical Background</div>
+            <div class="form-grid">
+                <div class="form-field">
+                    <label>Have you ever learned programming before?</label>
+                    <select id="learnedBefore">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Current skill level?</label>
+                    <select id="skillLevel">
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
+                </div>
+                <div class="full-width">
+                    <label>Which of the following have you used before? (Select all that apply)</label>
+                    <div class="checkbox-group" id="techCheckboxes">
+                        <label><input type="checkbox" value="HTML"> HTML</label>
+                        <label><input type="checkbox" value="CSS"> CSS</label>
+                        <label><input type="checkbox" value="JavaScript"> JavaScript</label>
+                        <label><input type="checkbox" value="Python"> Python</label>
+                        <label><input type="checkbox" value="PHP"> PHP</label>
+                        <label><input type="checkbox" value="Node.js"> Node.js</label>
+                        <label><input type="checkbox" value="Git/GitHub"> Git/GitHub</label>
+                        <label><input type="checkbox" value="Databases"> Databases</label>
+                        <label><input type="checkbox" value="None"> None</label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label>Do you own a laptop/computer? <span class="req">*</span></label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="ownsLaptop" value="Yes" required> Yes</label>
+                        <label><input type="radio" name="ownsLaptop" value="No"> No</label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label>Do you have reliable internet access? <span class="req">*</span></label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="internetAccess" value="Yes" required> Yes</label>
+                        <label><input type="radio" name="internetAccess" value="No"> No</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Preferred Study Time -->
+        <div class="section">
+            <div class="section-title"><i class="fas fa-clock"></i> 3. Preferred Study Time</div>
+            <div class="form-grid">
+                <div class="form-field">
+                    <label>Which class time would you prefer? <span class="req">*</span></label>
+                    <select id="preferredTime" required>
+                        <option value="">-- Choose --</option>
+                        <option>5:00 PM – 6:00 PM</option>
+                        <option>8:00 PM – 9:00 PM</option>
+                        <option>9:00 PM – 10:00 PM</option>
+                        <option>11:00 PM – 12:00 AM</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Alternative time (if unavailable)</label>
+                    <select id="altTime">
+                        <option value="">None</option>
+                        <option>5:00 PM – 6:00 PM</option>
+                        <option>8:00 PM – 9:00 PM</option>
+                        <option>9:00 PM – 10:00 PM</option>
+                        <option>11:00 PM – 12:00 AM</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Goals & Expectations -->
+        <div class="section">
+            <div class="section-title"><i class="fas fa-bullseye"></i> 4. Goals & Expectations</div>
+            <div class="form-grid">
+                <div class="full-width">
+                    <label>Why do you want to learn Web Development? <span class="req">*</span></label>
+                    <textarea rows="2" id="reason" placeholder="Tell us your motivation..." required></textarea>
+                    <div class="error-msg" id="reasonError"></div>
+                </div>
+                <div class="full-width">
+                    <label>What do you hope to achieve after completing this course? (Select all that apply)</label>
+                    <div class="checkbox-group" id="goalsCheck">
+                        <label><input type="checkbox" value="Get a Job"> Get a Job</label>
+                        <label><input type="checkbox" value="Freelancing"> Freelancing</label>
+                        <label><input type="checkbox" value="Build My Own Business"> Build My Own Business</label>
+                        <label><input type="checkbox" value="Develop Personal Projects"> Develop Personal Projects</label>
+                        <label><input type="checkbox" value="Improve Existing Skills"> Improve Existing Skills</label>
+                        <label><input type="checkbox" value="Other"> Other</label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label>Which area interests you most?</label>
+                    <select id="interestArea">
+                        <option>Frontend Development</option>
+                        <option>Backend Development</option>
+                        <option>Full Stack Development</option>
+                        <option>UI/UX Design</option>
+                        <option>Cybersecurity</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Commitment -->
+        <div class="section">
+            <div class="section-title"><i class="fas fa-handshake"></i> 5. Commitment</div>
+            <div class="form-grid">
+                <div class="full-width">
+                    <div class="checkbox-group" style="flex-direction: column; gap: 12px;">
+                        <label><input type="checkbox" id="commitHours" value="yes"> Are you willing to dedicate at least 4 hours per week for classes and additional time for projects? <span class="req">*</span></label>
+                        <label><input type="checkbox" id="feeAccept" value="yes"> Do you understand that the course fee is KES 500 per week? <span class="req">*</span></label>
+                        <label><input type="checkbox" id="attendancePolicy" value="yes"> Do you understand that students who miss 3 classes may be unenrolled from the program? <span class="req">*</span></label>
+                        <label><input type="checkbox" id="fullCommit" value="yes"> Are you committed to completing the full 12-week training program? <span class="req">*</span></label>
+                    </div>
+                    <div class="error-msg" id="commitError"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Comments -->
+        <div class="section">
+            <div class="section-title"><i class="fas fa-comment-dots"></i> Final Comments</div>
+            <div class="form-grid">
+                <div class="full-width">
+                    <label>Any suggestions, questions, or comments about the program?</label>
+                    <textarea rows="2" id="comments" placeholder="Your feedback or queries..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Submit Registration</button>
+        <div class="footer-note">
+            <i class="fas fa-check-circle"></i> Selected students will be contacted via WhatsApp & Email with enrollment instructions and payment details.
+        </div>
+    </form>
+</div>
+
+<div id="toastMsg" class="success-toast">
+    <i class="fas fa-check-circle"></i> <span id="toastText">Registration submitted!</span>
+</div>
+
+<script>
+    (function() {
+        const form = document.getElementById('registrationForm');
+
+        // helper to show toast
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toastMsg');
+            const toastSpan = document.getElementById('toastText');
+            toastSpan.innerText = message;
+            if(isError) {
+                toast.style.background = "#b33a2e";
+                toast.style.color = "white";
+            } else {
+                toast.style.background = "#1f6e43";
+            }
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+                if(isError) toast.style.background = "#1f6e43";
+            }, 3500);
+        }
+
+        // validation for required fields
+        function validateForm() {
+            let isValid = true;
+
+            // Full name
+            const fullName = document.getElementById('fullName').value.trim();
+            const nameError = document.getElementById('nameError');
+            if (!fullName) {
+                nameError.innerText = "Full name is required";
+                isValid = false;
+            } else { nameError.innerText = ""; }
+
+            // Phone
+            const phone = document.getElementById('phone').value.trim();
+            const phoneError = document.getElementById('phoneError');
+            if (!phone) {
+                phoneError.innerText = "Phone number required";
+                isValid = false;
+            } else { phoneError.innerText = ""; }
+
+            // Email
+            const email = document.getElementById('email').value.trim();
+            const emailError = document.getElementById('emailError');
+            const emailPattern = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+            if (!email) {
+                emailError.innerText = "Email required";
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                emailError.innerText = "Enter a valid email address";
+                isValid = false;
+            } else { emailError.innerText = ""; }
+
+            // County
+            const county = document.getElementById('county').value.trim();
+            const countyError = document.getElementById('countyError');
+            if (!county) {
+                countyError.innerText = "County of residence required";
+                isValid = false;
+            } else { countyError.innerText = ""; }
+
+            // radio laptop & internet - required
+            const laptopRadios = document.querySelectorAll('input[name="ownsLaptop"]');
+            const laptopSelected = Array.from(laptopRadios).some(r => r.checked);
+            if (!laptopSelected) {
+                showToast("Please confirm if you own a laptop/computer", true);
+                isValid = false;
+            }
+            const internetRadios = document.querySelectorAll('input[name="internetAccess"]');
+            const internetSelected = Array.from(internetRadios).some(r => r.checked);
+            if (!internetSelected) {
+                showToast("Please confirm if you have reliable internet access", true);
+                isValid = false;
+            }
+
+            // Preferred time
+            const preferredTime = document.getElementById('preferredTime').value;
+            if (!preferredTime) {
+                showToast("Please select a preferred class time", true);
+                isValid = false;
+            }
+
+            // Reason text
+            const reason = document.getElementById('reason').value.trim();
+            const reasonError = document.getElementById('reasonError');
+            if (!reason) {
+                reasonError.innerText = "Please tell us why you want to learn Web Development";
+                isValid = false;
+            } else { reasonError.innerText = ""; }
+
+            // Commitment checkboxes (all four required)
+            const commitHours = document.getElementById('commitHours').checked;
+            const feeAccept = document.getElementById('feeAccept').checked;
+            const attendancePolicy = document.getElementById('attendancePolicy').checked;
+            const fullCommit = document.getElementById('fullCommit').checked;
+            const commitError = document.getElementById('commitError');
+            if (!commitHours || !feeAccept || !attendancePolicy || !fullCommit) {
+                commitError.innerText = "All commitment terms must be agreed to continue.";
+                isValid = false;
+            } else {
+                commitError.innerText = "";
+            }
+
+            return isValid;
+        }
+
+        // On submit
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (!validateForm()) {
+                return;
+            }
+
+            // Collect data into an object for console / demo submission.
+            const formData = {
+                personal: {
+                    fullName: document.getElementById('fullName').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    gender: document.getElementById('gender').value,
+                    county: document.getElementById('county').value.trim(),
+                    occupation: document.getElementById('occupation').value,
+                    institution: document.getElementById('institution').value.trim()
+                },
+                tech: {
+                    learnedBefore: document.getElementById('learnedBefore').value,
+                    skillLevel: document.getElementById('skillLevel').value,
+                    technologies: Array.from(document.querySelectorAll('#techCheckboxes input:checked')).map(cb => cb.value),
+                    ownsLaptop: document.querySelector('input[name="ownsLaptop"]:checked')?.value,
+                    internetAccess: document.querySelector('input[name="internetAccess"]:checked')?.value
+                },
+                schedule: {
+                    preferredTime: document.getElementById('preferredTime').value,
+                    altTime: document.getElementById('altTime').value
+                },
+                goals: {
+                    reason: document.getElementById('reason').value.trim(),
+                    achievements: Array.from(document.querySelectorAll('#goalsCheck input:checked')).map(cb => cb.value),
+                    interestArea: document.getElementById('interestArea').value
+                },
+                commitment: {
+                    dedicateHours: document.getElementById('commitHours').checked,
+                    feeAccept: document.getElementById('feeAccept').checked,
+                    attendancePolicy: document.getElementById('attendancePolicy').checked,
+                    fullCommitment: document.getElementById('fullCommit').checked
+                },
+                comments: document.getElementById('comments').value
+            };
+
+            // optional: simple "None" logic for tech checkboxes - if None is selected and others, it's still fine, but we handle in storage.
+            if(formData.tech.technologies.includes('None') && formData.tech.technologies.length > 1) {
+                // not a big issue, but if needed filter? keep as is.
+            }
+
+            // Flatten data for Formspree
+            const flatData = {
+                "Full Name": formData.personal.fullName,
+                "Phone": formData.personal.phone,
+                "Email": formData.personal.email,
+                "Gender": formData.personal.gender,
+                "County": formData.personal.county,
+                "Occupation": formData.personal.occupation,
+                "Institution": formData.personal.institution,
+                "Learned Before": formData.tech.learnedBefore,
+                "Skill Level": formData.tech.skillLevel,
+                "Technologies": formData.tech.technologies.join(', '),
+                "Owns Laptop": formData.tech.ownsLaptop,
+                "Internet Access": formData.tech.internetAccess,
+                "Preferred Time": formData.schedule.preferredTime,
+                "Alternative Time": formData.schedule.altTime,
+                "Reason": formData.goals.reason,
+                "Goals": formData.goals.achievements.join(', '),
+                "Interest Area": formData.goals.interestArea,
+                "Will Dedicate Hours": formData.commitment.dedicateHours ? "Yes" : "No",
+                "Accepts Fee": formData.commitment.feeAccept ? "Yes" : "No",
+                "Accepts Attendance Policy": formData.commitment.attendancePolicy ? "Yes" : "No",
+                "Full Commitment": formData.commitment.fullCommitment ? "Yes" : "No",
+                "Comments": formData.comments,
+                "email": formData.personal.email // Important for Formspree reply-to functionality
+            };
+
+            const btn = form.querySelector('button[type="submit"]');
+            const originalBtnText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            btn.disabled = true;
+
+            fetch("https://formspree.io/f/mwvjwkke", {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(flatData)
+            }).then(response => {
+                if (response.ok) {
+                    showToast(`✅ Thank you ${formData.personal.fullName}! Your registration has been received.`, false);
+                    form.reset(); // Reset the form on successful submission
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    showToast(`❌ Oops! There was a problem submitting your form.`, true);
+                }
+            }).catch(error => {
+                showToast(`❌ Oops! There was a network error.`, true);
+            }).finally(() => {
+                btn.innerHTML = originalBtnText;
+                btn.disabled = false;
+            });
+        });
+
+        // Handle "None" checkbox synergy: if "None" is checked, uncheck others (convenience)
+        const noneCheckbox = Array.from(document.querySelectorAll('#techCheckboxes input')).find(cb => cb.value === 'None');
+        const otherTechBoxes = Array.from(document.querySelectorAll('#techCheckboxes input')).filter(cb => cb.value !== 'None');
+        if(noneCheckbox) {
+            noneCheckbox.addEventListener('change', function(e) {
+                if (noneCheckbox.checked) {
+                    otherTechBoxes.forEach(cb => cb.checked = false);
+                }
+            });
+            otherTechBoxes.forEach(cb => {
+                cb.addEventListener('change', function() {
+                    if (cb.checked && noneCheckbox.checked) {
+                        noneCheckbox.checked = false;
+                    }
+                });
+            });
+        }
+    })();
+</script>
+</body>
+</html>
