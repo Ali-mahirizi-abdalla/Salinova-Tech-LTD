@@ -742,7 +742,15 @@
                     form.reset(); // Reset the form on successful submission
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
-                    showToast(`❌ Oops! There was a problem submitting your form.`, true);
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            showToast(`❌ ${data.errors.map(e => e.message).join(", ")}`, true);
+                        } else {
+                            showToast(`❌ Oops! There was a problem submitting your form.`, true);
+                        }
+                    }).catch(err => {
+                        showToast(`❌ Oops! There was a problem submitting your form.`, true);
+                    });
                 }
             }).catch(error => {
                 showToast(`❌ Oops! There was a network error.`, true);
